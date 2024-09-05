@@ -1,0 +1,261 @@
+[
+    {
+        "item": "drum set",
+        "condition": "relatively new",
+        "purchaseDate": "last year",
+        "usage": "hasn't been used that much",
+        "setupStatus": "not properly set up",
+        "components": [
+            "bass"
+        ]
+    },
+    {
+        "item": "bass",
+        "boughtYear": 2020,
+        "condition": "sparingly used",
+        "remarks": [
+            "duct tape applied to bolts to prevent rattling"
+        ],
+        "commentary": [
+            "Owner likes having it around in case they need a bass."
+        ],
+        "additionalItems": [
+            {
+                "item": "Player Series Fender guitar",
+                "type": "guitar"
+            }
+        ]
+    },
+    {
+        "product": {
+            "type": "guitar",
+            "origin": "Mexico",
+            "manufacture_year_range": [
+                "2020",
+                "2021"
+            ],
+            "description": "Great guitar but not the owner's favorite."
+        }
+    },
+    {
+        "instrument": {
+            "type": "acoustic guitar",
+            "brand": "Washburn",
+            "series": "Comfort Series",
+            "features": {
+                "controls_on_side": true,
+                "pick_placement_spot": true,
+                "smoothed_edge_for_comfort": true
+            }
+        }
+    },
+    {
+        "chessBoard": {
+            "description": "Gifted from brother Andreas. Very nice and portable, albeit a little large but can fit in any suitcase with clothes."
+        }
+    },
+    {
+        "item": "Tiny Ukulele",
+        "description": "Plays as expected, strings are holding up well.",
+        "sentiment": "Positive",
+        "occasion_received": "Christmas",
+        "price_range": "Not expensive",
+        "additional_notes": "Nice instrument, related to music theme."
+    },
+    {
+        "amp": {
+            "brand": "Fender",
+            "model": "Mustang LT25",
+            "description": "It is a very good amp with a lot of options.",
+            "features": {
+                "physical_knobs": [
+                    "gain",
+                    "volume",
+                    "treble",
+                    "bass",
+                    "master"
+                ],
+                "ui": {
+                    "interface_knob": true,
+                    "presets": 30,
+                    "adjustable_parameters": [
+                        "reverb",
+                        "delay",
+                        "other effects"
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "favorite_midi_controller": {
+            "name": "Akai MPK Mini",
+            "description": "One of the best selling MIDI controllers.",
+            "usage": {
+                "frequency": "not often",
+                "availability": "available when needed",
+                "emotional_response": "makes me happy"
+            }
+        }
+    },
+    {
+        "microphone": {
+            "name": "AudioTekka",
+            "model": "AT-2020",
+            "type": "cardioid condenser",
+            "specifications": {
+                "phantom_power": "P48"
+            }
+        },
+        "cables": "various",
+        "audio_interface": "most important audio interface in the history of audio interfaces"
+    },
+    {
+        "product": "Focusrite Scarlett 2i2",
+        "user_ownership": true,
+        "popularity": "Every musician in the world has one",
+        "purpose": "For the user's music collection"
+    },
+    {
+        "item": "Yamaha Digital Piano",
+        "model": "P515",
+        "description": "Beautiful full-sized digital piano with wooden keys",
+        "price": 1500,
+        "currency": "USD"
+    },
+    {
+        "item": "TV",
+        "purchase_info": {
+            "year": 2019,
+            "context": {
+                "user_year_in_college": "sophomore",
+                "location": "small dorm room"
+            }
+        },
+        "specs": {
+            "size": "65 inch",
+            "brand": "Samsung",
+            "resolution": "Quad HD",
+            "type": "smart TV"
+        },
+        "status": {
+            "years_old": 5,
+            "condition": "survives to this day"
+        },
+        "note": "Originally considered a 75 inch model."
+    },
+    {
+        "item": "Poker Set",
+        "importance": "Not super important",
+        "opinion": "You got to have a poker set",
+        "description": "A nice hefty one with hefty chips, not the super light plastic ones",
+        "context": "Here you can see the station"
+    },
+    {
+        "query": "What do we call that?",
+        "context": {
+            "time": 2018,
+            "related_items": [
+                "dock",
+                "switch (uncertain location)",
+                "PlayStation 4"
+            ]
+        }
+    },
+    {
+        "purchase_detail": {
+            "console": "PlayStation 5",
+            "reason": "Play the Spider-Man game",
+            "purchase_timing": "After the release of the PlayStation 5",
+            "price_paid": 250,
+            "experience": "Fantastic"
+        }
+    },
+    {
+        "item": "couch",
+        "description": {
+            "type": "pullout couch",
+            "color": "beige",
+            "comfort": "nice and comfy",
+            "sturdiness": "sturdy"
+        },
+        "purchase_date": {
+            "year": "2017 or 2018",
+            "location": "Philadelphia"
+        }
+    },
+    {
+        "lighting": {
+            "lamps": 2
+        }
+    },
+    {
+        "description": "Two lamps with smart bulbs",
+        "details": {
+            "bulbs": {
+                "type": "RGB LED",
+                "features": [
+                    "change brightness",
+                    "change color",
+                    "remote control"
+                ]
+            },
+            "brand": "unknown"
+        }
+    },
+    {
+        "current_device": {
+            "year": 2018,
+            "model": "MacBook Air",
+            "type": "Intel"
+        },
+        "project_status": "probably working on it right now",
+        "recording_info": {
+            "year": 2024,
+            "half_of_year": "second"
+        },
+        "personal_thoughts": {
+            "regret": "slow to get onto these new Apple Silicon MacBooks",
+            "future_device_status": "neglected"
+        },
+        "additional_environment_details": {
+            "items": [
+                {
+                    "item": "big mat",
+                    "details": "no birds"
+                },
+                {
+                    "item": "hat",
+                    "details": "on the ground"
+                }
+            ]
+        }
+    },
+    {
+        "action": "close",
+        "item": {
+            "description": "funky rocks",
+            "origin": "Iceland"
+        }
+    },
+    {
+        "country": "Iceland",
+        "collection_method": "found in the wild on beaches",
+        "rocks": [
+            {
+                "description": "a really smooth, small rock, kind of one that you'd want to skip at a beach",
+                "condition": "perfect"
+            },
+            {
+                "description": "feels almost metallic in nature, volcanic",
+                "condition": "perfect",
+                "shape": "wedge shaped"
+            },
+            {
+                "description": "shaped like a long cylinder, porous, perfectly rounded everywhere",
+                "condition": "perfect",
+                "favorite": true
+            }
+        ]
+    }
+]
