@@ -1,0 +1,11 @@
+numpy
+scipy
+openai-whisper
+ffmpeg
+moviepy
+numba
+pandas
+json
+csv
+io
+re

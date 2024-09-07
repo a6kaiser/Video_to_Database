@@ -1,6 +1,7 @@
 import openai
 import os
 import json
+import re
 
 # Function to query GPT-4 with a prompt and a text from file
 def query_gpt4(system_prompt, user_prompt):
@@ -31,6 +32,10 @@ def query_gpt4(system_prompt, user_prompt):
         content = "Content omitted due to content filter"
     else:
         content = "API response is incomplete or still in progress"
+
+    with open("temp/last_openai",'w') as file:
+        file.write(content)
+
     return content
 
 def openai_to_find(text,case="json"):
@@ -39,3 +44,44 @@ def openai_to_find(text,case="json"):
     #print(start_index)
     #print(end_index)
     return text[start_index:end_index]
+
+def find_bracket(text):
+    start_index = text.find("{")
+    end_index = text.rfind("}")+1  # +1 to include the "}" character
+    #print(start_index)
+    #print(end_index)
+    return text[start_index:end_index]
+
+def dissect_transcript(transcript):
+    # Initialize the three lists
+    start_timestamps = []
+    end_timestamps = []
+    text_lines = []
+
+    # Regular expression to match the structure [start --> end] text
+    pattern = r"\[(.*) - (.*)\]  (.*)"
+
+    # Loop through each line in the content
+    for line in transcript:
+        match = re.match(pattern, line.strip())
+        if match:
+            start_timestamps.append(float(match.group(1)))  # Start timestamp
+            end_timestamps.append(float(match.group(2)))    # End timestamp
+            text_lines.append(match.group(3))        # Text spoken
+
+    return start_timestamps, end_timestamps, text_lines
+
+def convert_timestamp_to_sec(timestamps):
+    ret = []
+
+    # Regular expression to match the structure [start --> end] text
+    pattern = r"(\d*)\.(\d{3})"
+
+    # Loop through each line in the content
+    for x in timestamps:
+        match = re.match(pattern, x.strip())
+        if match:
+            time = int(match.group(1))
+            time += int(match.group(2))/1000
+            ret.append(time)
+    return ret

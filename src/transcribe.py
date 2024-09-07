@@ -13,7 +13,7 @@ def transcribe_audio(audio_file, model_size="small"):
     result = model.transcribe(audio_file,verbose=True)
     return result
 
-def transcribe_video(video_file, output_file, model_size="small"):
+def transcribe_video(video_file, model_size="small"):
     """Extract audio from video and transcribe it."""
     audio_file = "temp_audio.wav"
 
@@ -23,16 +23,18 @@ def transcribe_video(video_file, output_file, model_size="small"):
     # Transcribe audio
     transcript = transcribe_audio(audio_file, model_size=model_size)
 
-    # Save the transcript
+    # Clean up the temporary audio file
+    os.remove(audio_file)
+
+    return transcript
+
+def save_transcript(transcript,output_file):
     with open(output_file, 'w') as f:
         for segment in transcript['segments']:
             start = segment['start']
             end = segment['end']
             text = segment['text']
             f.write(f"[{start:.2f} - {end:.2f}] {text}\n")
-
-    # Clean up the temporary audio file
-    os.remove(audio_file)
 
 def main():
     print("starting")
@@ -58,7 +60,8 @@ def main():
 
     # Transcribe the video and save the transcript
     print(f"Transcribing {video_file}...")
-    transcribe_video(video_file, output_file, model_size=model_size)
+    transcript = transcribe_video(video_file, model_size=model_size)
+    save_transcript(transcript,output_file)
     print(f"Transcription complete. Transcript saved to {output_file}.")
 
 if __name__ == "__main__":

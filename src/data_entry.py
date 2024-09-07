@@ -2,32 +2,13 @@ from utils import *
 import pandas as pd
 import re
 
-def dissect_transcript(transcript):
-    # Initialize the three lists
-    start_timestamps = []
-    end_timestamps = []
-    text_lines = []
-
-    # Regular expression to match the structure [start --> end] text
-    pattern = r"\[(.*) --> (.*)\]  (.*)"
-
-    # Loop through each line in the content
-    for line in transcript:
-        match = re.match(pattern, line.strip())
-        if match:
-            start_timestamps.append(match.group(1))  # Start timestamp
-            end_timestamps.append(match.group(2))    # End timestamp
-            text_lines.append(match.group(3))        # Text spoken
-
-    return start_timestamps, end_timestamps, text_lines
-
-def data_entry(df,start_times,text_lines):
+def get_descriptions(df,start_times,text_lines):
 
     descriptions = []
     end = 0
     for index, row in df.iterrows():
         start = end
-        end = start_times.index(row['Timestamp'])
+        end = start_times.index(float(row['Timestamp']))
         if index == 0: continue
         description = ""
         #print(start,end)
@@ -41,8 +22,9 @@ def data_entry(df,start_times,text_lines):
         description += line + " "
     descriptions.append(description)
 
-    with open('last_descriptions.txt', 'w') as f:
-        [f.write(x+"\n") for x in descriptions]
+    return descriptions
+
+def data_entry_from_desc(descriptions):
 
     entries = []
     prompt = "From the following information, return a JSON object that captures all relevant information in the form of a data entry. You must judge relevant information for yourself, however note that most information provided is relevant."
@@ -50,24 +32,34 @@ def data_entry(df,start_times,text_lines):
         print(i)
         entry = query_gpt4(prompt,text)
         print(entry)
-        entry_json = json.loads(openai_to_find(entry))
+        entry_json = json.loads(find_bracket(entry))
         entries.append(entry_json)
 
     return entries
 
+def save_descriptions(descriptions,output_file):
+    with open(output_file, 'w') as f:
+        [f.write(x+"\n") for x in descriptions]
+
+def save_entries(entries,output_file):
+    with open(output_file, 'w') as f:
+        json.dump(entries, f, indent=4)
+
 
 def main():
-    with open("last_stamps.csv", 'r') as file:
+    with open("temp/last_stamps.csv", 'r') as file:
         df = pd.read_csv(file)
 
     with open("samples/sample0_time.txt", 'r') as file:
         transcript = file.read()
 
     start_times,_,text_lines = dissect_transcript(transcript.split("\n"))
-    entries = data_entry(df,start_times,text_lines)
 
-    with open('last_entry.json', 'w') as f:
-        json.dump(entries, f, indent=4)
+    descriptions = get_descriptions(df,start_times,text_lines)
+    save_descriptions(descriptions,'temp/last_descriptions.txt')
+
+    entries = data_entry(descriptions)
+    save_entries(entries,'temp/last_entry.json')
 
 if __name__ == "__main__":
     # This ensures that if the script is executed directly (e.g., `python transcribe.py`),
